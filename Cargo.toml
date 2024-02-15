@@ -1,0 +1,29 @@
+[workspace.lints.rust]
+unsafe_code = "forbid"
+unused = "allow" # For experimental dev.
+
+[workspace]
+resolver = "2"
+members = [
+    #-- Applicaiton Libraries
+    "crates/libs/lib-utils",
+    "crates/libs/lib-auth",
+    "crates/libs/lib-core",
+    "crates/libs/lib-rpc",
+
+        # -- Application Services
+    "crates/services/web-server",
+
+    # -- Tools
+    #"crates/tools/gen-key", 
+
+]
+
+
+
+[workspace.dependencies]
+# -- Serde
+serde_with = {version = "3", features = ["time_0_3"] }
+# -- Data
+modql = { version = "0.3.7", features = ["with-sea-query"]}
+derive_more = {version = "0.99.17", features = ["from", "display"] }

@@ -1,0 +1,31 @@
+# Cargo config file. 
+# See: https://doc.rust-lang.org/cargo/reference/config.html
+
+# Environments variables set for all `cargo ...` commands.
+[env]
+
+# Scope down tracing, to filter out external lib tracing.
+RUST_LOG="rust_web_app=debug,lib_utils=debug,lib_auth=debug,lib_core=debug"
+
+# -- Service Environment Variables
+# IMPORTANT: 
+#   For cargo commands only.
+#   For deployed env, should be managed by container 
+#   (e.g., Kubernetes).
+
+## -- Secrets
+# Keys and passwords below are for localhost dev ONLY.
+# e.g., "welcome" type of passwords.
+# i.e., Encryption not needed.
+SERVICE_DB_URL="postgres://app_user:dev_only_pwd@localhost/app_db"
+
+SERVICE_PWD_KEY ="23RVvc99WFAqOGb0OE0wg5fmi-h1lK39lxlrIia_X_8CpyyafxbUt0d-hhL0eI4K4P277Ab_3tIpyfySoVgdLQ"
+
+SERVICE_TOKEN_KEY = "SH460_NjhzqtD8PEx1MED79OqNcBjKYHXd_isqZbAAAxgWVl_KpopANrnjZnXEOhKAfRVLU1WENwIEzusRVLzA"
+
+SERVICE_TOKEN_DURATION_SEC="1800" #30 minutes
+## -- ConfigMap
+
+# This will be relative to Cargo.toml
+# In deployed images, probably use absolute path.
+SERVICE_WEB_FOLDER="web-folder/"
